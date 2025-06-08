@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>✨ Booking Form ✨</title>
   <style>
-    /* Your entire CSS remains unchanged (already well-written) */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -91,14 +90,12 @@
       padding: 12px;
       border-radius: 12px;
       border: 1px solid #ccc;
-      transition: all 0.3s ease;
       font-size: 1rem;
       margin-bottom: 20px;
     }
     input:invalid { border-color: red; }
     input:valid { border-color: green; }
     #Destination {
-      width: 100%;
       height: 150px;
       padding: 10px;
       border: 2px solid #4CAF50;
@@ -108,11 +105,6 @@
       color: #333;
       outline: none;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    #Destination:hover { border-color: #45a049; }
-    #Destination:focus {
-      border-color: #2e7d32;
-      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
     }
     .checkbox {
       display: flex;
@@ -134,7 +126,6 @@
       font-weight: bold;
       cursor: pointer;
       font-size: 1rem;
-      transition: background 0.3s ease;
     }
     button:hover { background-color: #2a2a6f; }
     @keyframes fadeInUp {
@@ -146,35 +137,31 @@
       50% { transform: translateY(-5px); }
     }
     .meal-options {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.meal-options input[type="checkbox"]:checked + .meal-btn {
-  background-color: #3a3a8f;
-  color: white;
-  box-shadow: 0 4px 12px rgba(58, 58, 143, 0.4);
-}
-
-.meal-btn {
-  padding: 10px 16px;
-  border-radius: 30px;
-  background: #f0f0f0;
-  cursor: pointer;
-  font-weight: bold;
-  color: #3a3a8f;
-  border: 2px solid transparent;
-  transition: 0.3s ease-in-out;
-}
-
-.meal-btn:hover {
-  background-color: #e6e6ff;
-  border-color: #3a3a8f;
-}
-
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .meal-options input[type="checkbox"]:checked + .meal-btn {
+      background-color: #3a3a8f;
+      color: white;
+      box-shadow: 0 4px 12px rgba(58, 58, 143, 0.4);
+    }
+    .meal-btn {
+      padding: 10px 16px;
+      border-radius: 30px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-weight: bold;
+      color: #3a3a8f;
+      border: 2px solid transparent;
+      transition: 0.3s ease-in-out;
+    }
+    .meal-btn:hover {
+      background-color: #e6e6ff;
+      border-color: #3a3a8f;
+    }
   </style>
 </head>
 <body>
@@ -224,17 +211,18 @@
           <option value="santorini">Santorini</option>
           <option value="tripura">Tripura</option>
         </select>
-      <h2>🍽 Meal Options</h2>
-<div class="meal-options">
-  <input type="checkbox" id="LandD" name="meal" value="LandD" hidden />
-  <label for="LandD" class="meal-btn">🍱 Lunch & Dinner (+₹800)</label>
 
-  <input type="checkbox" id="Lunch" name="meal" value="Lunch" hidden />
-  <label for="Lunch" class="meal-btn">🥗 Lunch (+₹500)</label>
+        <h2>🍽 Meal Options</h2>
+        <div class="meal-options">
+          <input type="checkbox" id="LandD" name="meal" value="LandD" hidden />
+          <label for="LandD" class="meal-btn">🍱 Lunch & Dinner (+₹800)</label>
 
-  <input type="checkbox" id="Dinner" name="meal" value="Dinner" hidden />
-  <label for="Dinner" class="meal-btn">🍛 Dinner (+₹700)</label>
-</div>
+          <input type="checkbox" id="Lunch" name="meal" value="Lunch" hidden />
+          <label for="Lunch" class="meal-btn">🥗 Lunch (+₹500)</label>
+
+          <input type="checkbox" id="Dinner" name="meal" value="Dinner" hidden />
+          <label for="Dinner" class="meal-btn">🍛 Dinner (+₹700)</label>
+        </div>
 
         <label for="numT">Number of Travelers</label>
         <input type="number" min="1" id="numT" required>
@@ -257,105 +245,96 @@
       </fieldset>
     </form>
   </div>
+
   <script>
- const form = document.getElementById('bookingForm');
+    const form = document.getElementById('bookingForm');
 
-  document.getElementById('dd').addEventListener('change', calculateTripDuration);
-  document.getElementById('rd').addEventListener('change', calculateTripDuration);
+    document.getElementById('dd').addEventListener('change', calculateTripDuration);
+    document.getElementById('rd').addEventListener('change', calculateTripDuration);
 
-  function calculateTripDuration() {
-    const depDate = new Date(document.getElementById('dd').value);
-    const retDate = new Date(document.getElementById('rd').value);
+    function calculateTripDuration() {
+      const depDate = new Date(document.getElementById('dd').value);
+      const retDate = new Date(document.getElementById('rd').value);
 
-    if (depDate && retDate && retDate > depDate) {
+      if (depDate && retDate && retDate > depDate) {
+        const diffTime = retDate - depDate;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        document.getElementById('duration').value = `${diffDays} days`;
+      } else {
+        document.getElementById('duration').value = '';
+      }
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const depDate = new Date(document.getElementById('dd').value);
+      const retDate = new Date(document.getElementById('rd').value);
+      const aadhar = document.getElementById('aadhar').value.trim();
+      const passport = document.getElementById('passport').value.trim();
+      const numTravelers = parseInt(document.getElementById('numT').value);
+
+      if (!form.checkValidity()) {
+        alert('⚠ Please fill out all required fields correctly!');
+        return;
+      }
+
+      if (!/^\d{12}$/.test(aadhar)) {
+        alert('❌ Invalid Aadhar number.');
+        return;
+      }
+
+      if (!/^[A-Z0-9]{6,9}$/i.test(passport)) {
+        alert('❌ Invalid passport number.');
+        return;
+      }
+
+      if (retDate <= depDate) {
+        alert('⛔ Return date must be after departure date!');
+        return;
+      }
+
+      if (numTravelers > 15) {
+        alert('👥 Maximum 15 travelers allowed.');
+        return;
+      }
+
       const diffTime = retDate - depDate;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById('duration').value = ${diffDays} days;
-    } else {
-      document.getElementById('duration').value = '';
-    }
-  }
+      const tripDuration = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+      const packageType = "luxury";
+      let p = 0;
+      if (packageType === "luxury") p = 60000;
+      else if (packageType === "premium") p = 50000;
+      else if (packageType === "standard") p = 40000;
 
-    const depDate = new Date(document.getElementById('dd').value);
-    const retDate = new Date(document.getElementById('rd').value);
-    const aadhar = document.getElementById('aadhar').value.trim();
-    const passport = document.getElementById('passport').value.trim();
-    const numTravelers = parseInt(document.getElementById('numT').value);
+      const lunch = document.querySelector('#Lunch')?.checked || false;
+      const dinner = document.querySelector('#Dinner')?.checked || false;
 
-    // Basic validation
-    if (!form.checkValidity()) {
-      alert('⚠ Please fill out all required fields correctly!');
-      return;
-    }
+      let total = numTravelers * tripDuration * p;
 
-    if (!/^\d{12}$/.test(aadhar)) {
-      alert('❌ Invalid Aadhar number.');
-      return;
-    }
+      if (lunch) total += numTravelers * lunchPrice;
+      if (dinner) total += numTravelers * dinnerPrice;
 
-    if (!/^[A-Z0-9]{6,9}$/i.test(passport)) {
-      alert('❌ Invalid passport number.');
-      return;
-    }
-
-    if (retDate <= depDate) {
-      alert('⛔ Return date must be after departure date!');
-      return;
-    }
-
-    if (numTravelers > 15) {
-      alert('👥 Maximum 15 travelers allowed.');
-      return;
-    }
-
-    const diffTime = retDate - depDate;
-    const tripDuration = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    // Pricing
-    const packageType = "luxury"; // You can change this logic later for user selection
-    let p = 0;
-    if (packageType === "luxury") p = 60000;
-    else if (packageType === "premium") p = 50000;
-    else if (packageType === "standard") p = 40000;
-
-    const lunchPrice = 500;
-    const dinnerPrice = 700;
-     
-    // Assume lunch/dinner checkboxes (add these to HTML if not present)
-    const lunch = document.querySelector('#Lunch')?.checked || false;
-    const dinner = document.querySelector('#Dinner')?.checked || false;
-
-    let total = numTravelers * tripDuration * p;
-
-    if (lunch) total += numTravelers * lunchPrice;
-    if (dinner) total += numTravelers * dinnerPrice;
-         if (form.checkValidity()) {
       const selectedDestinations = Array.from(document.querySelector('#Destination').selectedOptions).map(opt => opt.value);
+      const foreignDestinations = ["newzealand", "rome", "kyoto", "santorini"];
 
-      const foreignDestinations = ["newzealand", "rome", "kyoto","santorini"];
       selectedDestinations.forEach(dest => {
         if (foreignDestinations.includes(dest)) {
           let taxRate = 0;
-          if (dest === "newzealand") taxRate = 0.18;
+          if (dest === "newzealand" || dest === "kyoto") taxRate = 0.18;
           else if (dest === "rome") taxRate = 0.16;
-          else if (dest === "kyoto") taxRate = 0.18;
           total += total * taxRate;
         }
       });
-    }
 
-    // Store in localStorage
-    localStorage.setItem('totalAmount', total);
+      localStorage.setItem('totalAmount', total);
 
-    if (confirm('✅ Confirm your journey?')) {
-      alert('🎉 Booking valid! Proceeding to payment...');
-      window.location.href = 'payment.html';
-    }
-  });
-</script>
-
+      if (confirm('✅ Confirm your journey?')) {
+        alert('🎉 Booking valid! Proceeding to payment...');
+        window.location.href = 'payment.html';
+      }
+    });
+  </script>
 </body>
 </html>
