@@ -18,10 +18,11 @@
 | Name        | Role & Contribution |
 |-------------|---------------------|
 | **Shriya** (Group Leader) | Oversaw the complete project flow, coordinated all member contributions, and ensured design and functionality consistency. Personally handled major sections like navigation, homepage, payment, FAQs, privacy, terms, and also supported other pages wherever needed. Led integration and final deployment. |
-| **Sasidhar** | Created and handled **Contact Us**, **Complaint**, and **Feedback** forms. |
-| **Radhika** | Designed and implemented **Packages** and associated booking forms such as standard, luxury and premium forms. |
-| **Anushri** | Developed pages for **Destinations** and **Hidden Gems** and more. |
-| **Nandhana** | Built the **Blog** and **Why Choose Us** pages and more. |
+| **Sasidhar** | Designed and implemented the **Contact Us**, **Complaint**, and **Feedback** forms with functional validations and user-friendly layouts. Contributed to form logic and ensured proper connectivity across related pages. |
+| **Radhika** | Designed and implemented the **Packages** section along with associated booking forms like **Standard**, **Luxury**, and **Premium**. Ensured intuitive form flow, visual consistency, and smooth navigation. Also contributed to user interaction enhancements within the package pages. |
+| **Anushri** | Developed the visually engaging **Destinations** and **Hidden Gems** pages, focusing on layout, content flow, and aesthetics. Helped curate descriptive content and ensured the sections aligned with the site's overall theme. Also contributed to UI refinements across related sections. |
+| **Nandhana** | Built the **Blog** and **Why Choose Us** pages, integrating thoughtful design and user-oriented content. Crafted interactive elements and ensured smooth form functionality. Also supported styling tweaks and contributed to content consistency across pages. |
+
 
 ---
 
