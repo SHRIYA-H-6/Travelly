@@ -2,190 +2,309 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Expert Team - Why Choose Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expert Team - Why Choose Us | Travelly</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #a0e7e5, #f1a7c3), 
-        url('https://www.publicdomainpictures.net/pictures/290000/velka/light-blue-and-pink-flower-background.jpg');
-      background-size: cover;
-      color: #333;
-      line-height: 1.6;
-      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #a7c7e7, #f9d5e5);
       min-height: 100vh;
-      transition: background 0.4s ease-in-out;
+      color: #3b2f5c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.5rem;
+      overflow-x: hidden;
+      animation: fadeIn 1s ease forwards;
     }
 
-    .why-choose-us {
-      max-width: 1200px;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #3b2f5c;
+      letter-spacing: 0.05em;
+      user-select: none;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.6);
+      animation: bounceIn 1.2s ease;
+    }
+
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      60% { opacity: 1; transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(15px);
+      border-radius: 25px;
+      padding: 3rem 3rem 4rem;
+      box-shadow: 0 8px 32px rgba(59,47,92,0.2);
       transition: transform 0.3s ease;
     }
 
-    .why-choose-us:hover {
-      transform: scale(1.01);
-    }
-
-    .why-choose-us h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #4b3f72;
-      text-align: center;
+    .container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 48px rgba(59,47,92,0.3);
     }
 
     .reasons {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
+      gap: 2.5rem;
+      justify-content: center;
     }
 
     .reason {
+      background: rgba(255,255,255,0.55);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(59,47,92,0.12);
       width: 48%;
-      margin-bottom: 20px;
-      padding: 20px;
-      background: linear-gradient(145deg, #d0f1f9, #e2f4ff);
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      padding: 2rem 2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s ease;
+      cursor: default;
       position: relative;
+      user-select: none;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.4);
     }
 
     .reason:hover {
-      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(59,47,92,0.28);
+      transform: translateY(-7px) rotateZ(1deg);
+    }
+
+    @media (max-width: 768px) {
+      .reason {
+        width: 100%;
+      }
     }
 
     .reason img {
+      border-radius: 16px;
       width: 100%;
-      height: 200px;
+      height: 190px;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 1.7rem;
+      filter: drop-shadow(0 1px 3px rgba(59,47,92,0.15));
+      transition: filter 0.3s ease;
+    }
+
+    .reason:hover img {
+      filter: drop-shadow(0 3px 10px rgba(59,47,92,0.3));
     }
 
     .reason h3 {
-      font-size: 1.5rem;
-      color: #4b3f72;
-      margin-bottom: 10px;
+      color: #3b2f5c;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
     }
 
     .reason-content {
-      max-height: 120px;
+      color: #4a4069;
+      font-size: 1.05rem;
+      max-height: 130px;
       overflow: hidden;
-      transition: max-height 0.5s ease;
+      line-height: 1.5;
+      transition: max-height 0.6s ease;
     }
 
     .reason.expanded .reason-content {
-      max-height: 1000px;
-    }
-
-    .reason p {
-      font-size: 1rem;
-      margin-bottom: 10px;
-      color: #555;
+      max-height: 900px;
     }
 
     .read-more-btn {
-      background: none;
+      margin-top: auto;
+      align-self: flex-start;
+      background: linear-gradient(45deg, #7266ba, #a283ff);
       border: none;
-      color: #4b3f72;
-      font-weight: bold;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.4rem;
+      border-radius: 30px;
       cursor: pointer;
-      margin-top: 10px;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 4px 15px rgba(114,102,186,0.45);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .read-more-btn:hover {
+      background: linear-gradient(45deg, #a283ff, #7266ba);
+      box-shadow: 0 6px 22px rgba(114,102,186,0.7);
+    }
+
+    .read-more-btn i {
+      font-size: 1.15rem;
+      transition: transform 0.4s ease;
+      animation: pulseIcon 1.5s infinite;
+    }
+
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .reason.expanded .read-more-btn i {
+      transform: rotate(180deg);
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 4rem;
       text-align: center;
     }
 
     footer p {
-      font-size: 1rem;
-      color: #333;
+      font-size: 1.1rem;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
     }
 
     footer ul {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 10px;
-    }
-
-    footer ul li {
-      display: inline;
-      margin: 0 15px;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
     footer ul li a {
+      color: #7266ba;
+      font-weight: 600;
       text-decoration: none;
-      color: #4b3f72;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      font-size: 1.1rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.3s;
     }
 
     footer ul li a:hover {
-      color: #ff6347;
+      color: #a283ff;
+      border-bottom-color: #a283ff;
+    }
+
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #ffcbf2, #a0c4ff);
+      color: #3b2f5c;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      cursor: pointer;
+      display: none;
+      z-index: 99;
+    }
+
+    #scrollTopBtn:hover {
+      background: linear-gradient(135deg, #a0c4ff, #ffcbf2);
     }
   </style>
 </head>
 <body>
 
-  <!-- Main Section -->
-  <section class="why-choose-us">
+  <main class="container" role="main">
     <h2>Why Choose Us: Expert Team 👩‍💻👨‍💻</h2>
-    <div class="reasons">
 
-      <div class="reason">
-        <img src="https://img.freepik.com/free-vector/businesspeople-office-with-e-mail-marketing-icons_24877-51302.jpg" alt="Expert Team">
+    <section class="reasons">
+      <article class="reason" tabindex="0">
+        <img src="https://img.freepik.com/free-vector/businesspeople-office-with-e-mail-marketing-icons_24877-51302.jpg" alt="Expert Team" />
         <h3>Expert Team 🌟</h3>
-        <div class="reason-content">
-          <p>Our team consists of seasoned professionals with deep knowledge of the travel industry. We ensure that your journey is seamless and unforgettable. With years of experience and a passion for travel, our experts customize trips tailored to your needs and preferences.</p>
-          <p>We carefully listen to your needs and work tirelessly to design itineraries that guarantee a unique and fulfilling experience for each traveler. No detail is overlooked, and we always go the extra mile to provide you with outstanding service.</p>
+        <div class="reason-content" id="expert-content">
+          <p>Our team consists of seasoned professionals with deep knowledge of the travel industry 🌍. We ensure that your journey is seamless and unforgettable ✈. With years of experience and a passion for travel ❤, our experts customize trips tailored to your needs and preferences.</p>
+          <p>We carefully listen to your needs 👂 and design itineraries that guarantee a unique experience ✨. No detail is overlooked, and we go the extra mile to provide you outstanding service ⭐.</p>
         </div>
-        <button class="read-more-btn" onclick="toggleRead(this)">Read more ⬇</button>
-      </div>
+        <p style="font-style: italic; font-size: 0.95rem; margin-top: 1rem; color:#6a5d9e;">
+          ✈ “Travel is the only thing you buy that makes you richer.” 
+        </p>
+        <button class="read-more-btn" onclick="toggleRead(this)" aria-expanded="false" aria-controls="expert-content">
+          Read more <i class="fa fa-chevron-down"></i>
+        </button>
+      </article>
 
-      <div class="reason">
-        <img src="https://t3.ftcdn.net/jpg/11/95/95/78/240_F_1195957875_Tv8gmVzqTsKsg3ZdRlf10dRZErWAaC7N.jpg" alt="Personalized Attention">
+      <article class="reason" tabindex="0">
+        <img src="https://img.freepik.com/free-vector/happy-customer-online-review_74855-14091.jpg" alt="Personalized Attention" />
         <h3>Personalized Attention 💬</h3>
-        <div class="reason-content">
-          <p>Each member of our team is dedicated to giving you the best experience possible. From the initial consultation to the end of your trip, we are always available to answer your questions and make adjustments to your plan, ensuring your satisfaction.</p>
-          <p>Our approach is customer-centric, allowing us to curate each itinerary with the highest degree of care and personal attention.</p>
+        <div class="reason-content" id="personalized-content">
+          <p>Each member of our team is dedicated to giving you the best experience possible 💯. From the first consultation 🗣 to the end of your trip 🧳, we are here to answer your questions and make adjustments to your plan.</p>
+          <p>Our customer-centric approach helps us tailor each itinerary with personal attention and care 🤝.</p>
         </div>
-        <button class="read-more-btn" onclick="toggleRead(this)">Read more ⬇</button>
-      </div>
+        <p style="font-style: italic; font-size: 0.95rem; margin-top: 1rem; color:#6a5d9e;">
+          🌍 “Jobs fill your pocket, but adventures fill your soul.” 
+        </p>
+        <button class="read-more-btn" onclick="toggleRead(this)" aria-expanded="false" aria-controls="personalized-content">
+          Read more <i class="fa fa-chevron-down"></i>
+        </button>
+      </article>
+    </section>
+  </main>
 
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>Explore other sections:</p>
     <ul>
       <li><a href="customizetrips.html">🔧 Customized Trips</a></li>
-      <li><a href="support.html">🛠 24/7 Support</a></li>
+      <li><a href="sustainable.html">🌿 Sustainable Travel</a></li>
+
       <li><a href="index.html">🏠 Back to Home</a></li>
     </ul>
   </footer>
 
-  <!-- JavaScript -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">⬆ Top</button>
+
   <script>
     function toggleRead(button) {
       const reason = button.closest('.reason');
-      reason.classList.toggle('expanded');
-      button.textContent = reason.classList.contains('expanded') ? 'Read less ⬆' : 'Read more ⬇';
+      const isExpanded = reason.classList.toggle('expanded');
+      button.setAttribute('aria-expanded', isExpanded);
+      reason.setAttribute('aria-expanded', isExpanded);
+      const icon = button.querySelector('i');
+      if (isExpanded) {
+        button.firstChild.textContent = 'Read less ';
+        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        button.firstChild.textContent = 'Read more ';
+        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+      }
     }
+
+    // Scroll to top button
+    window.onscroll = function () {
+      document.getElementById("scrollTopBtn").style.display =
+        document.documentElement.scrollTop > 100 ? "block" : "none";
+    };
+
+    document.getElementById("scrollTopBtn").onclick = function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
   </script>
 
 </body>
