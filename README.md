@@ -17,7 +17,7 @@
 
 | Name        | Role & Contribution |
 |-------------|---------------------|
-| **Shriya** (Group Leader) | Managed overall structure and integration. Handled navigation, payment, FAQs, privacy, terms, homepage, and deployment. |
+| **Shriya** (Group Leader) | Oversaw the complete project flow, coordinated all member contributions, and ensured design and functionality consistency. Personally handled major sections like navigation, homepage, payment, FAQs, privacy, terms, and also supported other pages wherever needed. Led integration and final deployment. |
 | **Sasidhar** | Created and handled **Contact Us**, **Complaint**, and **Feedback** forms. |
 | **Radhika** | Designed and implemented **Packages** and associated booking forms such as standard, luxury and premium forms. |
 | **Anushri** | Developed pages for **Destinations** and **Hidden Gems** and more. |
