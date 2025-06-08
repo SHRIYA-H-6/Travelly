@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complaint Form</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #dbeafe, #eff6ff);
+      margin: 0;
+      padding: 20px;
+      color: #003366;
+      background-image: url('https://www.adobe.com/uk/express/learn/media_13f8626e32f453ec22fc25afbbc0c6b40a1070781.jpeg?width=750&format=jpeg&optimize=medium');
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: linear-gradient(to bottom right, #e0f7ff, #ffffff);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid #93c5fd;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .container:hover {
+      transform: scale(1.01);
+    }
+
+    h2, h3 { text-align: center; color: #1e3a8a; }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="time"], input[type="file"],
+    input[type="number"], input[type="range"], select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 10px;
+      border: 1px solid #93c5fd;
+      background: #f8fbff;
+      font-size: 15px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+      background-color: #ffffff;
+    }
+    textarea { resize: vertical; }
+
+    .checkbox-group { margin-top: 20px; }
+    .checkbox-group label {
+      display: block;
+      margin-top: 10px;
+      font-weight: normal;
+      color: #374151;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .submit-button-container { text-align: center; }
+
+    .severity-display {
+      text-align: right;
+      font-weight: bold;
+      color: #1d4ed8;
+      margin-top: 5px;
+    }
+
+    .success-message {
+      text-align: center;
+      background-color: #d1fae5;
+      color: #065f46;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 15px;
+      display: none;
+      font-weight: bold;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    input.error, select.error, textarea.error {
+      border-color: red;
+      background-color: #fff5f5;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 20px; width: 95%; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🙋 Submit a Complaint</h2>
+    <p style="text-align:center; color:#334155;">Your voice matters. Let us know what's wrong and we'll do our best to make it right! 💬</p>
+    <form action="#" method="post" enctype="multipart/form-data">
+      <label for="name">👤 Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">📧 Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">📞 Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="relationship">🔗 Your Relationship to Us</label>
+      <select id="relationship" name="relationship" required>
+        <option value="">-- Select --</option>
+        <option value="customer">🛍 Customer</option>
+        <option value="employee">👩‍💼 Employee</option>
+        <option value="vendor">📦 Vendor</option>
+        <option value="other">🔄 Other</option>
+      </select>
+
+      <label for="type">📂 Nature of Complaint</label>
+      <select id="type" name="type" required>
+        <option value="">-- Select --</option>
+        <option value="service">🛠 Service Issue</option>
+        <option value="staff">😍 Staff Behavior</option>
+        <option value="product">📦 Product Defect</option>
+        <option value="safety">⚠ Safety Concern</option>
+        <option value="other">📌 Other</option>
+      </select>
+
+      <label for="description">📝 Detailed Description</label>
+      <textarea id="description" name="description" rows="5" required></textarea>
+
+      <label for="persons">👥 Persons Involved (if known)</label>
+      <input type="text" id="persons" name="persons">
+
+      <label for="repeat">🔁 Have you experienced this issue before?</label>
+      <select id="repeat" name="repeat">
+        <option value="">-- Select --</option>
+        <option value="yes">✔ Yes</option>
+        <option value="no">❌ No</option>
+      </select>
+
+      <label for="impact">💥 How did this issue impact you?</label>
+      <select id="impact" name="impact">
+        <option value="">-- Select --</option>
+        <option value="financial">💸 Financial loss</option>
+        <option value="emotional">😔 Emotional distress</option>
+        <option value="time">⏰ Time wasted</option>
+        <option value="other">📌 Other</option>
+      </select>
+
+      <label for="severity">⚖ How serious is this issue? (1 = Minor, 5 = Critical)</label>
+      <input type="range" id="severity" name="severity" min="1" max="5" value="3">
+      <div class="severity-display" id="severityLevel">Severity: 3 😐</div>
+
+      <label for="evidence">📌 Attach Evidence (photos, files)</label>
+      <input type="file" id="evidence" name="evidence">
+
+      <label for="outcome">🎯 What outcome would you like?</label>
+      <textarea id="outcome" name="outcome" rows="3"></textarea>
+
+      <h3>📝 Consent and Acknowledgment</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="contactConsent"> ☎ I agree to be contacted for follow-up</label>
+        <label><input type="checkbox" name="anonymous"> 🕵‍♂ I want to remain anonymous</label>
+        <label><input type="checkbox" name="acknowledgment" required> ✅ I confirm that the information provided is accurate</label>
+      </div>
+
+      <div class="submit-button-container">
+        <button type="submit">📨 Submit Complaint</button>
+      </div>
+
+      <div class="success-message" id="successMessage">✅ Complaint submitted successfully!</div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.querySelector("form");
+    const successMessage = document.getElementById("successMessage");
+    const severityInput = document.getElementById("severity");
+    const severityLevel = document.getElementById("severityLevel");
+    const anonymousCheckbox = document.querySelector("input[name='anonymous']");
+    const personalFields = ["name", "email", "phone"];
+
+    // Animated severity emojis
+    const severityFaces = ["🙂", "😐", "😕", "😟", "😱"];
+    severityInput.addEventListener("input", () => {
+      const val = parseInt(severityInput.value);
+      severityLevel.innerText = Severity: ${val} ${severityFaces[val - 1]};
+      severityLevel.style.transform = "scale(1.1)";
+      setTimeout(() => severityLevel.style.transform = "scale(1)", 200);
+    });
+
+    // Handle anonymity
+    anonymousCheckbox.addEventListener("change", function () {
+      personalFields.forEach(id => {
+        const el = document.getElementById(id);
+        el.disabled = this.checked;
+        el.style.opacity = this.checked ? 0.5 : 1;
+        el.title = this.checked ? "Hidden due to anonymity" : "";
+      });
+    });
+
+    // Fun confirmation confetti effect (textual)
+    function showSuccess() {
+      successMessage.style.display = "block";
+      successMessage.innerText = "🎉 Your complaint was successfully submitted! Thank you for your feedback! 🎉";
+      setTimeout(() => successMessage.style.display = "none", 5000);
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      let valid = true;
+      successMessage.style.display = "none";
+      form.querySelectorAll("input, select, textarea").forEach(el => el.classList.remove("error"));
+      form.querySelectorAll("input[required], select[required], textarea[required]").forEach(field => {
+        if (!field.value.trim()) {
+          field.classList.add("error");
+          valid = false;
+        }
+      });
+      const acknowledgment = form.querySelector("input[name='acknowledgment']");
+      if (!acknowledgment.checked) {
+        acknowledgment.focus();
+        valid = false;
+      }
+      if (valid) {
+        showSuccess();
+        form.reset();
+        severityLevel.innerText = "Severity: 3 😐";
+      } else {
+        alert("⚠ Please fill all required fields correctly.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travelly | Blog</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+  background: #a0e7e5;
+  /* other styles */
+}
+
+nav h1 {
+  background-color: #a0e7e5;
+  color: #4b3f72;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  text-shadow: none;
+}
+
+
+    nav {
+      background:  #a0e7e5;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(75, 63, 114, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+   
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+  color: #4b3f72;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  color: #a65fa7;
+}
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: blueviolet;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+     header {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 5rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+
+  
+    header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.4rem;
+      color: #f9f7ffdd;
+      letter-spacing: 0.03em;
+      position: relative;
+      z-index: 1;
+      font-weight: 600;
+    }
+
+    .container {
+      flex-grow: 1;
+      max-width: 1000px;
+      margin: 3rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: #4b3f72;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      user-select: none;
+    }
+    .section-title::before {
+      content: '\f075';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-150%) translateY(5px);
+      font-size: 2rem;
+      color: #a65fa7cc;
+      opacity: 0.5;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      width: 90px;
+      height: 3px;
+      background: #a65fa7;
+      border-radius: 10px;
+      transform: translateX(-50%);
+    }
+
+    .blog-post,
+    .story,
+    .tip {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(166, 95, 167, 0.15);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      will-change: transform;
+      cursor: default;
+    }
+    .blog-post:hover,
+    .story:hover,
+    .tip:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 40px rgba(166, 95, 167, 0.3);
+    }
+
+      .blog-post img {
+      width: 100%; height: 300px; object-fit: cover;
+    }
+
+    
+    .blog-post:hover img {
+      transform: scale(1.05);
+    }
+
+    .blog-content,
+    .story-content,
+    .tip-content {
+      padding: 2rem 2.5rem;
+    }
+
+    .blog-content h3,
+    .story h3,
+    .tip h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #462255;
+      margin-bottom: 1rem;
+      user-select: text;
+    }
+    .blog-content p,
+    .story p,
+    .tip p {
+      font-size: 1.05rem;
+      color: #5a4b6a;
+      user-select: text;
+      letter-spacing: 0.02em;
+      line-height: 1.55;
+    }
+
+    /* Travel Stories & Tips Layout */
+    .travel-stories,
+    .travel-tips {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+    @media (max-width: 720px) {
+      .travel-stories,
+      .travel-tips {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Buttons */
+    .read-more-btn {
+      margin-top: 1.4rem;
+      background: linear-gradient(135deg, #a65fa7, #d6a5de);
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 6px 12px #b184c6cc;
+      transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    .read-more-btn:hover,
+    .read-more-btn:focus {
+      background: linear-gradient(135deg, #d6a5de, #a65fa7);
+      box-shadow: 0 10px 24px #d5a6dfdd;
+      transform: translateY(-3px);
+      outline: none;
+    }
+
+    .blog-buttons {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .blog-buttons .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #4b3f72, #6e5fa7);
+      color: white;
+      padding: 14px 32px;
+      margin: 0 15px;
+      border-radius: 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 8px 18px rgba(75, 63, 114, 0.5);
+      transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+      user-select: none;
+    }
+    .blog-buttons .btn:hover {
+      background: linear-gradient(135deg, #6e5fa7, #4b3f72);
+      box-shadow: 0 12px 30px rgba(75, 63, 114, 0.75);
+      transform: translateY(-4px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #dfeefc;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #4b3f72;
+      user-select: none;
+      box-shadow: inset 0 2px 10px #b7a8e3cc;
+    }
+
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #a65fa7, #d6a5de);
+      border: none;
+      padding: 14px 18px;
+      border-radius: 50%;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px #b184c6cc;
+      transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      z-index: 1100;
+    }
+    #scrollTopBtn:hover {
+      background: linear-gradient(135deg, #d6a5de, #a65fa7);
+      box-shadow: 0 10px 30px #d5a6dfdd;
+      transform: translateY(-4px);
+    }
+
+    /* Fade In Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>Travelly 🌍</h1>
+    <ul>
+      <li><a href="index.html" tabindex="1">Home</a></li>
+      <li><a href="Destinations.html" tabindex="2">Destinations</a></li>
+      <li><a href="blog.html" tabindex="3">Blog</a></li>
+      <li><a href="Packages.html" tabindex="4">Packages</a></li>
+      <li><a href="Contact.html" tabindex="5">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h2>📝 Travel Blog 🌍</h2>
+    <p>Welcome to Travelly!</p>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Existing blog posts -->
+    <article class="blog-post fade-in" tabindex="6" aria-label="Blog post about Santorini, Greece">
+      <img
+        src="https://lp-cms-production.imgix.net/2025-03/Shutterstock92342251.jpg?auto=format&fit=crop&w=1600&q=80"
+        alt="White houses and blue sea view in Santorini, Greece"
+      />
+      <div class="blog-content">
+        <h3>Exploring the Wonders of Santorini</h3>
+        <p>Santorini is known for its white-washed houses, stunning sunsets, and crystal-clear waters...</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            The striking contrast between the whitewashed buildings and the vibrant blue of the Aegean Sea creates a breathtaking view...
+          </p>
+          <p>
+            Renowned for its unique volcanic landscape, Santorini offers black sand beaches, ancient ruins, and cliffside villages...
+          </p>
+          <p>
+            Wine enthusiasts can enjoy local Assyrtiko wines with scenic views...
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="santorini-more">Read More</button>
+      </div>
+    </article>
+
+    <article class="blog-post fade-in" tabindex="7" aria-label="Blog post about Prague, Czech Republic">
+      <img
+        src="https://cdn-imgix.headout.com/media/images/33b1833b42e8af419d4a0d8897eb2c48-This%20is%20a%20Photograph%20of%20St.%20Vitus%20Cathedral.jpg?auto=format&q=90&fit=crop"
+        alt="St. Vitus Cathedral in Prague, Czech Republic"
+      />
+      <div class="blog-content">
+        <h3>Discovering the Hidden Gems of Prague</h3>
+        <p>Prague is a city where history and beauty intertwine. Its skyline is adorned with fairy-tale spires and historic charm...</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            The Charles Bridge offers panoramic views of the Old Town and Prague Castle...
+          </p>
+          <p>
+            The Astronomical Clock and lively Old Town Square are must-sees...
+          </p>
+          <p>
+            Prague's beer culture and cozy pubs make it a paradise for beer lovers...
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="prague-more">Read More</button>
+      </div>
+    </article>
+
+    <article class="blog-post fade-in" tabindex="8" aria-label="Blog post about Egypt's pyramids">
+      <img
+        src="https://res.cloudinary.com/aenetworks/image/upload/v1/the-sphinx-gettyimages-1183584133"
+        alt="Pyramids of Egypt at sunset"
+      />
+      <div class="blog-content">
+        <h3>🌍 Exploring the Wonders of Egypt</h3>
+        <p>Egypt is home to some of the most iconic monuments in the world, including the Great Pyramids...</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            From Luxor temples to Valley of the Kings, Egypt’s history is legendary...
+          </p>
+          <p>
+            Take a Nile cruise past ancient tombs and desert landscapes...
+          </p>
+          <p>
+            Experience Cairo's markets, Islamic heritage, and vibrant street life...
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="egypt-more">Read More</button>
+      </div>
+    </article>
+
+    <!-- Travel Stories Section -->
+    <section
+      class="travel-stories fade-in"
+      aria-label="Travel Stories"
+      tabindex="9"
+    >
+      <h2 class="section-title"><i class="fas fa-route"></i> Travel Stories</h2>
+
+      <article class="story" tabindex="10" aria-label="Story about Emily's Adventure in Bali">
+        <h3>Emily's Adventure in Bali</h3>
+        <p>From the lush rice terraces to the serene beaches, Bali stole my heart... 🌴🌊</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            I loved waking up to the sound of waves and exploring the vibrant Ubud markets. The food was amazing — especially the fresh tropical fruits! 🍍🥭
+          </p>
+          <p>
+            Meeting the locals and learning about their culture made this trip unforgettable. Can't wait to return! ✈❤
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="emily-story-more">Read More</button>
+      </article>
+
+      <article class="story" tabindex="11" aria-label="Story about Jason's Hiking Journey in Patagonia">
+        <h3>Jason's Hiking Journey in Patagonia</h3>
+        <p>Challenging trails and breathtaking views made Patagonia a hiker's paradise... 🏞🥾</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            Every day brought a new adventure — glaciers, turquoise lakes, and endless mountain peaks. The fresh air was incredible! ❄🌄
+          </p>
+          <p>
+            Camping under the stars and sharing stories with fellow travelers was the highlight. Truly a nature lover’s dream! 🌌🔥
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="jason-story-more">Read More</button>
+      </article>
+
+      <article class="story" tabindex="12" aria-label="Story about Sophia’s Cultural Trip to Kyoto">
+        <h3>Sophia’s Cultural Trip to Kyoto</h3>
+        <p>Exploring ancient temples and tranquil gardens in Kyoto was a journey through time... ⛩🍂</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            The peaceful tea ceremonies and vibrant autumn leaves made the city magical. Walking through bamboo forests was a dream come true! 🎋🍁
+          </p>
+          <p>
+            Kyoto’s traditional ryokans offered the perfect cozy stay, blending hospitality with elegance. A cultural feast for the senses! 🍵🎎
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="sophia-story-more">Read More</button>
+      </article>
+    </section>
+
+    <!-- Travel Tips Section -->
+    <section class="travel-tips fade-in" aria-label="Travel Tips" tabindex="13">
+      <h2 class="section-title"><i class="fas fa-lightbulb"></i> Travel Tips</h2>
+
+      <article class="tip" tabindex="14" aria-label="Travel tip about packing smart">
+        <h3>Pack Smart</h3>
+        <p>Always roll your clothes to save space and avoid wrinkles. Don’t forget a portable charger! 🎒🔌</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            Packing cubes can help organize your luggage and make unpacking easier.
+          </p>
+          <p>
+            Bring versatile clothing pieces that can be layered for different weather conditions.
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="pack-tip-more">Read More</button>
+      </article>
+
+      <article class="tip" tabindex="15" aria-label="Travel tip about local etiquette">
+        <h3>Respect Local Culture</h3>
+        <p>Learn a few phrases in the local language and respect customs and traditions. 🤝🌏</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            Dress appropriately when visiting religious or cultural sites.
+          </p>
+          <p>
+            Always ask permission before taking photos of people.
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="culture-tip-more">Read More</button>
+      </article>
+
+      <article class="tip" tabindex="16" aria-label="Travel tip about health precautions">
+        <h3>Stay Healthy</h3>
+        <p>Drink bottled water, pack a first-aid kit, and know your allergy info. 💧💊</p>
+        <div class="more-text" style="display: none;">
+          <p>
+            Avoid street food if you have a sensitive stomach.
+          </p>
+          <p>
+            Use insect repellent in areas prone to mosquitoes.
+          </p>
+        </div>
+        <button class="read-more-btn" aria-expanded="false" aria-controls="health-tip-more">Read More</button>
+      </article>
+    </section>
+
+    <!-- Navigation Buttons -->
+    <div class="blog-buttons">
+    <a href="whychooseus.html" class="btn">💡 Why Choose Us</a>
+    <a href="gallery.html" class="btn">🖼 Gallery</a>
+  </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Travelly. All rights reserved.
+  </footer>
+
+  <button
+    id="scrollTopBtn"
+    aria-label="Scroll to top"
+    title="Back to top"
+    type="button"
+  >
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Smooth scroll to top button
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        scrollBtn.style.display = 'block';
+      } else {
+        scrollBtn.style.display = 'none';
+      }
+    });
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Read More toggle functionality with aria attributes
+    document.querySelectorAll('.read-more-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const content = btn.previousElementSibling;
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        if (content.style.display === 'none' || !content.style.display) {
+          content.style.display = 'block';
+          btn.textContent = 'Read Less';
+        } else {
+          content.style.display = 'none';
+          btn.textContent = 'Read More';
+        }
+      });
+    });
+
+    // Fade-in on scroll animation
+    function revealOnScroll() {
+      document.querySelectorAll('.fade-in').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>

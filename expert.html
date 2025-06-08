@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expert Team - Why Choose Us</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #a0e7e5, #f1a7c3), 
+        url('https://www.publicdomainpictures.net/pictures/290000/velka/light-blue-and-pink-flower-background.jpg');
+      background-size: cover;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+      transition: background 0.4s ease-in-out;
+    }
+
+    .why-choose-us {
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .why-choose-us:hover {
+      transform: scale(1.01);
+    }
+
+    .why-choose-us h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #4b3f72;
+      text-align: center;
+    }
+
+    .reasons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .reason {
+      width: 48%;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: linear-gradient(145deg, #d0f1f9, #e2f4ff);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .reason:hover {
+      transform: scale(1.02);
+    }
+
+    .reason img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .reason h3 {
+      font-size: 1.5rem;
+      color: #4b3f72;
+      margin-bottom: 10px;
+    }
+
+    .reason-content {
+      max-height: 120px;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .reason.expanded .reason-content {
+      max-height: 1000px;
+    }
+
+    .reason p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .read-more-btn {
+      background: none;
+      border: none;
+      color: #4b3f72;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      display: block;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    footer ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: #4b3f72;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #ff6347;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Section -->
+  <section class="why-choose-us">
+    <h2>Why Choose Us: Expert Team 👩‍💻👨‍💻</h2>
+    <div class="reasons">
+
+      <div class="reason">
+        <img src="https://img.freepik.com/free-vector/businesspeople-office-with-e-mail-marketing-icons_24877-51302.jpg" alt="Expert Team">
+        <h3>Expert Team 🌟</h3>
+        <div class="reason-content">
+          <p>Our team consists of seasoned professionals with deep knowledge of the travel industry. We ensure that your journey is seamless and unforgettable. With years of experience and a passion for travel, our experts customize trips tailored to your needs and preferences.</p>
+          <p>We carefully listen to your needs and work tirelessly to design itineraries that guarantee a unique and fulfilling experience for each traveler. No detail is overlooked, and we always go the extra mile to provide you with outstanding service.</p>
+        </div>
+        <button class="read-more-btn" onclick="toggleRead(this)">Read more ⬇</button>
+      </div>
+
+      <div class="reason">
+        <img src="https://t3.ftcdn.net/jpg/11/95/95/78/240_F_1195957875_Tv8gmVzqTsKsg3ZdRlf10dRZErWAaC7N.jpg" alt="Personalized Attention">
+        <h3>Personalized Attention 💬</h3>
+        <div class="reason-content">
+          <p>Each member of our team is dedicated to giving you the best experience possible. From the initial consultation to the end of your trip, we are always available to answer your questions and make adjustments to your plan, ensuring your satisfaction.</p>
+          <p>Our approach is customer-centric, allowing us to curate each itinerary with the highest degree of care and personal attention.</p>
+        </div>
+        <button class="read-more-btn" onclick="toggleRead(this)">Read more ⬇</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Explore other sections:</p>
+    <ul>
+      <li><a href="customizetrips.html">🔧 Customized Trips</a></li>
+      <li><a href="support.html">🛠 24/7 Support</a></li>
+      <li><a href="index.html">🏠 Back to Home</a></li>
+    </ul>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleRead(button) {
+      const reason = button.closest('.reason');
+      reason.classList.toggle('expanded');
+      button.textContent = reason.classList.contains('expanded') ? 'Read less ⬆' : 'Read more ⬇';
+    }
+  </script>
+
+</body>
+</html>

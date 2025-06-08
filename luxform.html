@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✨ Booking Form ✨</title>
+  <style>
+    /* Your entire CSS remains unchanged (already well-written) */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      animation: backgroundFade 10s infinite alternate ease-in-out;
+    }
+    @keyframes backgroundFade {
+      0% { background: linear-gradient(to right, #fbc2eb, #a6c1ee); }
+      100% { background: linear-gradient(to right, #a6c1ee, #fbc2eb); }
+    }
+    .container {
+      background: #fff;
+      width: 100%;
+      max-width: 800px;
+      padding: 40px;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 0.8s ease-in-out;
+      position: relative;
+    }
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #ff4b91;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 16px rgba(255, 75, 145, 0.5);
+      animation: bounce 2s infinite;
+    }
+    h1 {
+      text-align: center;
+      color: #3a3a8f;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      animation: fadeIn 1.2s ease;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6a6a6a;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    .image-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #3a3a8f;
+    }
+    label {
+      font-weight: 600;
+      color: #3a3a8f;
+      margin-bottom: 5px;
+      display: block;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    input:invalid { border-color: red; }
+    input:valid { border-color: green; }
+    #Destination {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border: 2px solid #4CAF50;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      font-size: 16px;
+      color: #333;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    #Destination:hover { border-color: #45a049; }
+    #Destination:focus {
+      border-color: #2e7d32;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    }
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .checkbox a {
+      color: #3a3a8f;
+      text-decoration: underline;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3a3a8f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    button:hover { background-color: #2a2a6f; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">🎉 Best Seller! 10% OFF</div>
+    <div class="image-container">
+      <img src="https://wallpapers.com/images/featured/travel-laptop-0m6r2w9ywrwtb81n.jpg" alt="Travel" />
+    </div>
+    <h1>🌟 Book Your Dream Trip! 🌟</h1>
+    <p class="subtitle">🚀 Book now and enjoy a 10% early bird discount! 🍷🏼✨</p>
+
+    <form id="bookingForm">
+      <fieldset>
+        <legend>Luxury Package</legend>
+        <h2>👤 Personal Information</h2>
+        <label for="name">Full Name</label>
+        <input type="text" name="Fullname" id="name" required>
+
+        <label for="aadhar">Aadhar Number</label>
+        <input type="text" name="Aadharnum" id="aadhar" required>
+
+        <label for="passport">Passport Number</label>
+        <input type="text" name="Passportnum" id="passport" required>
+
+        <h2>📧 Contact Information</h2>
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="9876543210" />
+
+        <h2>🌍 Trip Details</h2>
+        <label for="Destination">Destination</label>
+        <label>Instruction</label>
+        <label>Press control simultaneously to add more than one destination</label>
+        <select name="Destination" id="Destination" multiple required>
+          <option value="agra">Agra</option>
+          <option value="andaman">Andaman and Nicobar Islands</option>
+          <option value="andhra">Andhra Pradesh</option>
+          <option value="assam">Assam</option>
+          <option value="kerala">Kerala</option>
+          <option value="kyoto">Kyoto</option>
+          <option value="leh">Leh-Ladakh</option>
+          <option value="maharashtra">Maharashtra</option>
+          <option value="newzealand">New Zealand</option>
+          <option value="rome">Rome</option>
+          <option value="santorini">Santorini</option>
+          <option value="tripura">Tripura</option>
+        </select>
+
+        <label for="numT">Number of Travelers</label>
+        <input type="number" min="1" id="numT" required>
+
+        <label for="dd">Departure Date</label>
+        <input type="date" id="dd" required>
+
+        <label for="rd">Return Date</label>
+        <input type="date" id="rd" required>
+
+        <label for="duration">Trip Duration</label>
+        <input type="text" id="duration" name="duration" readonly>
+
+        <label class="checkbox">
+          <input type="checkbox" required />
+          I agree to the <a href="Terms.html" target="_blank">terms and conditions</a>
+        </label>
+
+        <button type="submit">💳 Proceed to Payment</button>
+      </fieldset>
+    </form>
+  </div>
+  <script>
+ const form = document.getElementById('bookingForm');
+
+  document.getElementById('dd').addEventListener('change', calculateTripDuration);
+  document.getElementById('rd').addEventListener('change', calculateTripDuration);
+
+  function calculateTripDuration() {
+    const depDate = new Date(document.getElementById('dd').value);
+    const retDate = new Date(document.getElementById('rd').value);
+
+    if (depDate && retDate && retDate > depDate) {
+      const diffTime = retDate - depDate;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('duration').value = ${diffDays} days;
+    } else {
+      document.getElementById('duration').value = '';
+    }
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const depDate = new Date(document.getElementById('dd').value);
+    const retDate = new Date(document.getElementById('rd').value);
+    const aadhar = document.getElementById('aadhar').value.trim();
+    const passport = document.getElementById('passport').value.trim();
+    const numTravelers = parseInt(document.getElementById('numT').value);
+
+    // Basic validation
+    if (!form.checkValidity()) {
+      alert('⚠ Please fill out all required fields correctly!');
+      return;
+    }
+
+    if (!/^\d{12}$/.test(aadhar)) {
+      alert('❌ Invalid Aadhar number.');
+      return;
+    }
+
+    if (!/^[A-Z0-9]{6,9}$/i.test(passport)) {
+      alert('❌ Invalid passport number.');
+      return;
+    }
+
+    if (retDate <= depDate) {
+      alert('⛔ Return date must be after departure date!');
+      return;
+    }
+
+    if (numTravelers > 15) {
+      alert('👥 Maximum 15 travelers allowed.');
+      return;
+    }
+
+    const diffTime = retDate - depDate;
+    const tripDuration = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    // Pricing
+    const packageType = "luxury"; // You can change this logic later for user selection
+    let p = 0;
+    if (packageType === "luxury") p = 60000;
+    else if (packageType === "premium") p = 50000;
+    else if (packageType === "standard") p = 40000;
+
+    const lunchPrice = 500;
+    const dinnerPrice = 700;
+
+    // Assume lunch/dinner checkboxes (add these to HTML if not present)
+    const lunch = document.querySelector('#Lunch')?.checked || false;
+    const dinner = document.querySelector('#Dinner')?.checked || false;
+
+    let total = numTravelers * tripDuration * p;
+
+    if (lunch) total += numTravelers * lunchPrice;
+    if (dinner) total += numTravelers * dinnerPrice;
+         if (form.checkValidity()) {
+      const selectedDestinations = Array.from(document.querySelector('#Destination').selectedOptions).map(opt => opt.value);
+
+      const foreignDestinations = ["newzealand", "rome", "kyoto","santorini"];
+      selectedDestinations.forEach(dest => {
+        if (foreignDestinations.includes(dest)) {
+          let taxRate = 0;
+          if (dest === "newzealand") taxRate = 0.18;
+          else if (dest === "rome") taxRate = 0.16;
+          else if (dest === "kyoto") taxRate = 0.18;
+          total += total * taxRate;
+        }
+      });
+    }
+
+    // Store in localStorage
+    localStorage.setItem('totalAmount', total);
+
+    if (confirm('✅ Confirm your journey?')) {
+      alert('🎉 Booking valid! Proceeding to payment...');
+      window.location.href = 'payment.html';
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e6f7ff;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://www.adobe.com/uk/express/learn/media_13f8626e32f453ec22fc25afbbc0c6b40a1070781.jpeg?width=750&format=jpeg&optimize=medium');
+    }
+
+    .form-container {
+      background: linear-gradient(to bottom right, #1b3159, #6785b8);
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      color: #ffffff;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .form-container p {
+      text-align: center;
+      font-size: 15px;
+      color: #e0f0ff;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #ffffff;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ffffff;
+      font-size: 16px;
+      background-color: #f0faff;
+      color: #000;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-group .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .form-group .radio-group label {
+      font-weight: normal;
+      color: #ffffff;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .end {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      gap: 20px;
+    }
+
+    .end button {
+      width: 200px;
+    }
+
+    .help-message {
+      text-align: center;
+      font-size: 16px;
+      color: #007BFF;
+      margin: 30px 0;
+    }
+
+    .success-message {
+      background-color: #d1fae5;
+      color: #065f46;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 15px;
+      display: none;
+      font-weight: bold;
+    }
+
+    .error {
+      border-color: red !important;
+      background-color: #fff5f5 !important;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 4px rgba(0, 170, 255, 0.5);
+      background-color: #ffffff;
+    }
+
+    .char-counter {
+      text-align: right;
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      .end {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>We're Here to Help! 🤝</h2>
+    <p>Have a question or need support? 💬 Fill out the form below and we'll get back to you ASAP! 📧</p>
+
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="username">👤 Full Name:</label>
+        <input type="text" id="username" name="username" placeholder="John Doe" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">📧 E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">📱 Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required />
+      </div>
+
+      <div class="form-group">
+        <label for="message">✍ Your Message:</label>
+        <textarea id="message" name="message" maxlength="500" placeholder="Let us know how we can help you!" required></textarea>
+        <div id="charCounter" class="char-counter">0/500 characters</div>
+      </div>
+
+      <div class="form-group">
+        <label for="inquiry-type">📂 Inquiry Type:</label>
+        <select id="inquiry-type" name="inquiry_type" required>
+          <option value="">-- Choose an option --</option>
+          <option value="booking">🛫 Booking</option>
+          <option value="feedback">🗣 Feedback</option>
+          <option value="support">🛠 Support</option>
+          <option value="complaints">😕 Complaints</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>💬 Preferred Support Channel:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="support_channel" value="live_chat" required /> 💻 Live Chat</label>
+          <label><input type="radio" name="support_channel" value="whatsapp" /> 📱 WhatsApp</label>
+          <label><input type="radio" name="support_channel" value="call" /> 📞 Call</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="referral">🔎 How did you hear about us?</label>
+        <select id="referral" name="referral">
+          <option value="">-- Choose one --</option>
+          <option value="google">🌐 Google</option>
+          <option value="social">📲 Social Media</option>
+          <option value="friend">👫 Friend</option>
+          <option value="ads">📢 Ads</option>
+          <option value="event">🎉 Event</option>
+        </select>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="newsletter" name="newsletter" />
+        <label for="newsletter">📬 Subscribe to our newsletter for updates & offers</label>
+      </div>
+
+      <button type="submit">🚀 Send Message</button>
+      <div class="success-message" id="successMsg">✅ Message sent successfully!</div>
+    </form>
+  </div>
+
+  <div class="end">
+    <a href="complaint.html"><button>😠 Complaint</button></a>
+    <a href="Feedback.html"><button>💡 Feedback</button></a>
+  </div>
+
+  <div class="help-message">
+    <p>We're always happy to assist! 💙 Reach out and our support team will respond soon!</p>
+  </div>
+
+  <!-- Script with interactivity -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const messageBox = document.getElementById('message');
+    const charCounter = document.getElementById('charCounter');
+
+    // Update live character counter
+    messageBox.addEventListener('input', () => {
+      const length = messageBox.value.length;
+      charCounter.textContent = ${length}/500 characters;
+      if (length > 500) {
+        messageBox.classList.add('error');
+        charCounter.style.color = 'red';
+      } else {
+        messageBox.classList.remove('error');
+        charCounter.style.color = '#ccc';
+      }
+    });
+
+    // Shake animation
+    function shakeField(field) {
+      field.animate([
+        { transform: 'translateX(0)' },
+        { transform: 'translateX(-5px)' },
+        { transform: 'translateX(5px)' },
+        { transform: 'translateX(0)' }
+      ], { duration: 300 });
+    }
+
+    // Celebration feedback
+    function celebrate() {
+      successMsg.style.display = "block";
+      successMsg.innerText = "🎉 Message sent! We’ll get back to you soon! 🎉";
+      successMsg.animate([
+        { transform: 'scale(0.8)', opacity: 0 },
+        { transform: 'scale(1.05)', opacity: 1 },
+        { transform: 'scale(1)', opacity: 1 }
+      ], { duration: 600, easing: 'ease-out' });
+      setTimeout(() => {
+        successMsg.style.display = "none";
+      }, 5000);
+      successMsg.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let isValid = true;
+
+      form.querySelectorAll('input, select, textarea').forEach(input => {
+        input.classList.remove('error');
+      });
+
+      form.querySelectorAll('input[required], select[required], textarea[required]').forEach(input => {
+        if (!input.value.trim()) {
+          input.classList.add('error');
+          shakeField(input);
+          isValid = false;
+        }
+      });
+
+      const radios = form.querySelectorAll('input[name="support_channel"]');
+      if (![...radios].some(r => r.checked)) {
+        isValid = false;
+        alert("📢 Please select a preferred support channel.");
+      }
+
+      if (messageBox.value.length > 500) {
+        isValid = false;
+        alert("✍ Your message exceeds the 500 character limit.");
+      }
+
+      if (isValid) {
+        submitBtn.disabled = true;
+        let dots = 0;
+        submitBtn.innerText = "Sending";
+        const interval = setInterval(() => {
+          submitBtn.innerText = "Sending" + ".".repeat((dots++ % 3) + 1);
+        }, 300);
+
+        setTimeout(() => {
+          clearInterval(interval);
+          submitBtn.innerText = "🚀 Send Message";
+          submitBtn.disabled = false;
+          celebrate();
+          form.reset();
+          charCounter.textContent = "0/500 characters";
+        }, 1500);
+      } else {
+        alert("⚠ Please fill all required fields correctly.");
+      }
+    });
+  </script>
+</body>
+</html>

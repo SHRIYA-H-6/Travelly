@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sustainable Travel - Why Choose Us | Travelly</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #c8e6c9 0%, #f9f7f1 100%);
+    color: #333;
+    padding: 2rem;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
+  }
+  /* subtle noise texture overlay */
+  body::before {
+    content: "";
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+    opacity: 0.05;
+    z-index: 0;
+  }
+
+  /* Canvas for leaves and butterflies */
+  #leaves-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glassmorphism container */
+  .container {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255 255 255 / 0.75);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255 255 255 / 0.6);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: #2e7d32;
+    margin-bottom: 1.8rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  img {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+
+  p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Styled button link */
+  .back {
+    display: inline-block;
+    margin-top: 1.8rem;
+    padding: 0.6rem 1.4rem;
+    background-color: #2e7d32;  /* Dark green */
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.4);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .back:hover {
+    background-color: #145214; /* Darker green */
+    box-shadow: 0 6px 14px rgba(20, 82, 20, 0.7);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="leaves-canvas"></canvas>
+
+<div class="container">
+  <h1>Sustainable & Eco-Friendly</h1>
+  <img src="https://img.freepik.com/premium-photo/eco-tourism-sustainable-travel-greener-world-ai-generated_127023-226.jpg?w=996" alt="Eco-friendly travel image" />
+  <p>
+    At <strong>Travelly</strong>, we believe that travel should inspire—not just people, but positive impact on the planet too. That’s why we promote sustainable tourism through eco-conscious accommodations, low-emission travel options, and partnerships with local green initiatives.
+  </p>
+  <p>
+    Our eco-friendly packages are designed to let you explore breathtaking destinations while minimizing your environmental footprint. Whether it’s a stay in a solar-powered cabin or supporting community-run eco-resorts, your journey helps protect the places you love.
+  </p>
+  <p>
+    Together, let’s travel responsibly and make a difference—one step, one trip, one planet at a time. 🌍
+  </p>
+  <a href="whychooseus.html" class="back">&larr; Back to Why Choose Us</a>
+</div>
+
+<script>
+  const canvas = document.getElementById('leaves-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Leaf shape path generator: a wavy elliptical leaf
+  function drawLeafShape(ctx, size) {
+    ctx.beginPath();
+    const w = size * 0.6;
+    const h = size;
+    ctx.moveTo(0, 0);
+    for (let i = 0; i <= 1; i += 0.05) {
+      // Upper edge wavy curve
+      let x = w * i;
+      let y = h * Math.sin(i * Math.PI) * 0.25;
+      ctx.lineTo(x, y);
+    }
+    for (let i = 1; i >= 0; i -= 0.05) {
+      // Lower edge wavy curve (mirror)
+      let x = w * i;
+      let y = -h * Math.sin(i * Math.PI) * 0.25;
+      ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+  }
+
+  class Leaf {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * -height;
+      this.size = 12 + Math.random() * 18;
+      this.speedY = 1 + Math.random() * 2.5;
+      this.baseX = this.x;
+      this.amplitude = 20 + Math.random() * 20; // horizontal sway amplitude
+      this.frequency = 0.01 + Math.random() * 0.02; // sway speed
+      this.angle = Math.random() * 2 * Math.PI;
+      this.angularSpeed = 0.005 + Math.random() * 0.015;
+
+      // Autumn leaf colors with warm gradient
+      this.fillColor = rgba(255, ${120 + Math.floor(Math.random() * 80)}, 0, 0.85);
+      this.strokeColor = rgba(139,69,19, 0.85);
+      this.shadowColor = rgba(0,0,0,0.15);
+    }
+
+    update(time) {
+      this.y += this.speedY;
+      this.x = this.baseX + Math.sin(time * this.frequency * 1000) * this.amplitude;
+      this.angle += this.angularSpeed;
+
+      if (this.y > height + this.size) {
+        this.y = -this.size;
+        this.baseX = Math.random() * width;
+      }
+      if (this.x > width + this.size) this.x = -this.size;
+      if (this.x < -this.size) this.x = width + this.size;
+    }
+
+    draw(time) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+
+      // Draw leaf shape
+      ctx.shadowColor = this.shadowColor;
+      ctx.shadowBlur = 6;
+      ctx.shadowOffsetX = 2;
+      ctx.shadowOffsetY = 2;
+
+      drawLeafShape(ctx, this.size);
+      ctx.fillStyle = this.fillColor;
+      ctx.fill();
+
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = this.strokeColor;
+      ctx.stroke();
+
+      ctx.restore();
+    }
+  }
+
+  // Butterfly class with simple wing flapping animation
+  class Butterfly {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = 20 + Math.random() * 20;
+      this.speedX = 0.3 + Math.random() * 0.5;
+      this.speedY = 0.1 + Math.random() * 0.2;
+      this.angle = Math.random() * 2 * Math.PI;
+      this.angularSpeed = (Math.random() - 0.5) * 0.002;
+
+      this.wingFlapSpeed = 0.02 + Math.random() * 0.03;
+      this.wingFlapAngle = 0;
+
+      // Soft pastel butterfly colors
+      const colors = [
+        ['#ffd1dc', '#ff7eb9'],
+        ['#c1fba4', '#6cca64'],
+        ['#a0e7e5', '#58c9b9'],
+        ['#ffecb3', '#f0a500']
+      ];
+      const c = colors[Math.floor(Math.random() * colors.length)];
+      this.wingColor1 = c[0];
+      this.wingColor2 = c[1];
+      this.bodyColor = '#4b3f72';
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += Math.sin(this.x * 0.05) * 0.5 + this.speedY; // gentle wave + down
+
+      this.angle += this.angularSpeed;
+      this.wingFlapAngle += this.wingFlapSpeed;
+
+      // wrap around horizontally and vertically
+      if (this.x > width + this.size) this.x = -this.size;
+      if (this.y > height + this.size) this.y = Math.random() * height * 0.5;
+      if (this.y < -this.size) this.y = height + this.size;
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+
+      // wing flap oscillation between 0 and ~0.5 radians
+      const flap = Math.sin(this.wingFlapAngle) * 0.5;
+
+      // left wing
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(-this.size * 0.7, -this.size * 0.5 - flap * 10, -this.size * 0.4, this.size * 0.5 + flap * 10, 0, this.size * 0.2);
+      ctx.closePath();
+      ctx.fillStyle = this.wingColor1;
+      ctx.shadowColor = 'rgba(0,0,0,0.1)';
+      ctx.shadowBlur = 3;
+      ctx.fill();
+
+      // right wing
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(this.size * 0.7, -this.size * 0.5 + flap * 10, this.size * 0.4, this.size * 0.5 - flap * 10, 0, this.size * 0.2);
+      ctx.closePath();
+      ctx.fillStyle = this.wingColor2;
+      ctx.fill();
+
+      // body
+      ctx.beginPath();
+      ctx.fillStyle = this.bodyColor;
+      ctx.ellipse(0, this.size * 0.1, this.size * 0.12, this.size * 0.35, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
+  }
+
+  const leaves = [];
+  const butterflies = [];
+  const leavesCount = 40;
+  const butterfliesCount = 10;
+
+  for (let i = 0; i < leavesCount; i++) {
+    leaves.push(new Leaf());
+  }
+  for (let i = 0; i < butterfliesCount; i++) {
+    butterflies.push(new Butterfly());
+  }
+
+  function animate(time = 0) {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const leaf of leaves) {
+      leaf.update(time);
+      leaf.draw(time);
+    }
+
+    for (const butterfly of butterflies) {
+      butterfly.update();
+      butterfly.draw();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
+</body>
+</html>

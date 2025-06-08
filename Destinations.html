@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Popular Destinations</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #a0e7e5; transition: background 0.4s ease-in-out, color 0.4s ease-in-out;
+    }
+    .destinations {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center;
+      background-size: cover;
+      color: #4b3f72;
+    }
+    h2, .sub-head {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #4b3f72;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      width: 100%;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    .card img {
+      width: 100%; height: 200px; object-fit: cover;
+    }
+    .card h3 {
+      margin: 1rem 1rem 0.5rem;
+      color: #3e8e7e;
+      font-size: 1.2rem;
+    }
+    .card p {
+      padding: 0 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .animated-btn, .toggle-btn {
+      position: relative;
+      padding: 15px 30px;
+      font-size: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      margin: 1rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .animated-btn:hover, .toggle-btn:hover {
+      transform: scale(1.05);
+      background-color: #4b3f72;
+    }
+    a { text-decoration: none; }
+    .dark-mode {
+      background-color: #1e1e2f;
+      color: #e0e0ff;
+    }
+    .dark-mode .card {
+      background: #2a2a3d;
+      color: #e0e0ff;
+    }
+    .dark-mode .card p {
+      color: #ccc;
+    }
+    .dark-mode .animated-btn {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    }
+    @media (max-width: 768px) {
+      h2, .sub-head { font-size: 1.5rem; }
+      .animated-btn { width: 90%; max-width: 300px; font-size: 16px; }
+    }
+    @media (max-width: 480px) {
+      .card img { height: 150px; }
+      .card h3 { font-size: 1rem; }
+      .card p { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <section class="destinations">
+    <h2>Popular Destinations</h2>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌓 Toggle Theme</button>
+
+    <h3 class="sub-head">In India</h3>
+    <div class="cards">
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Taj_Mahal_%28Edited%29.jpeg" alt="Taj Mahal in Agra" />
+        <h3>Agra</h3>
+        <p>Home to the iconic Taj Mahal, one of the Seven Wonders of the World.</p>
+      </div>
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://plutotours.in/places/wp-content/uploads/2024/01/Tso-Moriri-2.webp" alt="Leh-Ladakh landscape" />
+        <h3>Leh-Ladakh</h3>
+        <p>Breathtaking landscapes, high-altitude lakes, and thrilling road trips.</p>
+      </div>
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://assets.cntraveller.in/photos/65f445fc8411ed4511e9a4c9/4:3/w_4992,h_3744,c_limit/GettyImages-110051777.jpg" alt="Kerala backwaters" />
+        <h3>Kerala</h3>
+        <p>Peaceful houseboat rides in Alleppey, lush tea gardens in Munnar, and Varkala beaches.</p>
+      </div>
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://www.andamanislands.com/uploads/andamanislands/blog/main/5fa40347e356f155_history_of_andaman_islands.jpg" alt="Andaman and Nicobar Islands beach" />
+        <h3>Andaman and Nicobar Islands</h3>
+        <p>Pristine white-sand beaches, scuba diving spots, and crystal-clear waters.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-head">Abroad</h3>
+    <div class="cards">
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://cdn.contexttravel.com/image/upload/c_fill,q_60,w_2600/v1738865109/production/city/hero_image_27_1738865109c6c8398a.jpg" alt="Kyoto cherry blossoms" />
+        <h3>Kyoto</h3>
+        <p>Known for its ancient temples, tranquil gardens, and stunning traditional architecture.</p>
+      </div>
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://www.santoriniexperts.com/wp-content/uploads/sunset-santorini.jpg" alt="Santorini sunset view" />
+        <h3>Santorini, Greece</h3>
+        <p>Whitewashed buildings, crystal-clear waters, and mesmerizing sunsets.</p>
+      </div>
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://media.gq.com/photos/5ba1680236b2d004cdd843cd/16:9/w_2560%2Cc_limit/new-zealand-queenstown-travel-guide-gq.jpg" alt="Queenstown, New Zealand" />
+        <h3>New Zealand</h3>
+        <p>Dramatic landscapes, adventure sports, and vibrant natural beauty.</p>
+      </div>
+      <div class="card" onclick="location.href='Packages.html'">
+        <img src="https://images.pexels.com/photos/2064827/pexels-photo-2064827.jpeg" alt="Colosseum in Rome" />
+        <h3>Rome, Italy</h3>
+        <p>Ancient ruins, stunning architecture, and a rich cultural heritage.</p>
+      </div>
+    </div>
+    <a href="hidden.html" class="animated-btn">🔍 Hidden Gems</a>
+    <a href="plan.html" class="animated-btn">🗺️ Plan Your Trip</a>
+  </section>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>

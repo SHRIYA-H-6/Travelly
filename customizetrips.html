@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customized Trip - Why Choose Us</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #a0e7e5, #b4f8c8);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .floating-flower {
+      position: fixed;
+      top: 100%;
+      font-size: 24px;
+      animation: float 15s linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .why-choose-us {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: #ffffffcc;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .why-choose-us h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #4b3f72;
+      text-align: center;
+    }
+
+    .custom-trip-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .description, .image {
+      width: 48%;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-trip-info h3 {
+      font-size: 1.5rem;
+      color: #4b3f72;
+      margin-bottom: 15px;
+    }
+
+    .custom-trip-info p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .custom-trip-info img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .cta-button {
+      background-color: #4b3f72;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #ff6347;
+    }
+
+    .toggle-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007BFF;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .typing-heading {
+      font-size: 2rem;
+      color: #4b3f72;
+      text-align: center;
+      height: 40px;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    footer ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    footer ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    footer ul li a {
+      text-decoration: none;
+      color: #4b3f72;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #ff6347;
+    }
+
+    @media (max-width: 768px) {
+      .custom-trip-info {
+        flex-direction: column;
+      }
+      .description, .image {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating flower emojis -->
+  <span class="floating-flower" style="left: 5%; animation-delay: 0s;">🌸</span>
+  <span class="floating-flower" style="left: 20%; animation-delay: 3s;">🌸</span>
+  <span class="floating-flower" style="left: 35%; animation-delay: 6s;">🌸</span>
+  <span class="floating-flower" style="left: 50%; animation-delay: 1s;">🌸</span>
+  <span class="floating-flower" style="left: 70%; animation-delay: 5s;">🌸</span>
+  <span class="floating-flower" style="left: 85%; animation-delay: 2s;">🌸</span>
+
+  <section class="why-choose-us">
+    <div class="typing-heading" id="typing-heading">🌍</div>
+
+    <button class="toggle-btn" onclick="toggleTheme()">🌓 Toggle Theme</button>
+
+    <div class="custom-trip-info">
+      <div class="description">
+        <h3>🎯 Tailored Just for You</h3>
+        <p>✨ Our customized trips are crafted with you in mind! Whether you're chasing waterfalls, soaking in sunsets, or wandering historic cities – we plan it your way. 🌅🏰</p>
+        <p>💬 Let our expert team turn your dream trip into reality, full of memories and magic! ✈📸</p>
+      <a href="Packages.html" class="cta-button" onclick="tripAlert()">🚀 Plan Your Trip</a>
+
+      </div>
+      <div class="image">
+        <img src="https://img.freepik.com/free-photo/top-view-hand-holding-smartphone_23-2149617681.jpg?ga=GA1.1.1036624329.1745903261&semt=ais_hybrid&w=740" alt="Customized Trip">
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>🔗 Explore other sections:</p>
+    <ul>
+      <li><a href="expert.html">👩‍💼 Expert Team</a></li>
+      <li><a href="support.html">📞 24/7 Support</a></li>
+      <li><a href="index.html">🏠 Back to Home</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    let lightMode = true;
+
+    function toggleTheme() {
+      const body = document.body;
+      if (lightMode) {
+        body.style.background = "linear-gradient(135deg, #2b5876, #4e4376)";
+        body.style.color = "#f1f1f1";
+        document.querySelectorAll('.why-choose-us, .description, .image').forEach(el => {
+          el.style.backgroundColor = '#1a1a2e';
+          el.style.color = '#f1f1f1';
+        });
+      } else {
+        body.style.background = "linear-gradient(135deg, #a0e7e5, #b4f8c8)";
+        body.style.color = "#333";
+        document.querySelectorAll('.why-choose-us, .description, .image').forEach(el => {
+          el.style.backgroundColor = '#ffffffcc';
+          el.style.color = '#333';
+        });
+      }
+      lightMode = !lightMode;
+    }
+
+    function tripAlert() {
+      alert("🎉 Great choice! We'll help you plan your perfect trip 🌍✈");
+    }
+
+    // Typing animation for heading
+    const typingText = "Why Choose Us: ✨ Customized Trip ✨";
+    let i = 0;
+    function typeHeading() {
+      if (i < typingText.length) {
+        document.getElementById("typing-heading").innerHTML += typingText.charAt(i);
+        i++;
+        setTimeout(typeHeading, 80);
+      }
+    }
+    window.onload = typeHeading;
+  </script>
+
+</body>
+</html>

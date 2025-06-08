@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏯 Tokyo Combo Package 🎌</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(to right, #f8c8d2, #f78c8d); /* light pink to light red */
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      max-width: 800px;
+      width: 100%;
+      padding: 40px;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background-color: #ff4081;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 16px rgba(255, 64, 129, 0.4);
+    }
+    h1 {
+      text-align: center;
+      color: #4a2d55;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6c4b6e;
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+    .description {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    .description p {
+      font-size: 1rem;
+      color: #4a2d55;
+    }
+    form {
+      display: grid;
+      gap: 20px;
+      background-color: #fef6fb; /* pastel pink form background */
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(255, 192, 203, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+    label {
+      font-weight: 600;
+      color: #4a2d55;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #d6d3f0;
+      background-color: #f3f7ff; /* soft pastel blue */
+      transition: all 0.3s ease;
+      color: #4a2d55;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #c47ad4;
+      box-shadow: 0 0 0 3px rgba(196, 122, 212, 0.2);
+      outline: none;
+    }
+    .date-range input {
+      background-color: #f3f7ff;
+      border: 1px solid #d6d3f0;
+      color: #4a2d55;
+    }
+    button {
+      padding: 14px;
+      background-color: #db78a0; /* pastel magenta/pink */
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 1rem;
+    }
+    button:hover {
+      background-color: #b75e84;
+    }
+    label.checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #4a2d55;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      padding-top: 60px;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">🌸 Limited Offer!</div>
+    <div style="width: 100%; max-height: 320px; overflow: hidden; border-radius: 16px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); margin-bottom: 30px;">
+      <img src="https://www.hilton.com/im/en/NoHotel/19361896/shutterstock-667925704.jpg?impolicy=crop&cw=3800&ch=2533&gravity=NorthWest&xposition=0&yposition=1&rw=1280&rh=856" alt="Tokyo Skyline with Cherry Blossoms" style="width: 100%; height: auto; object-fit: cover;" />
+    </div>
+
+    <h1>🏯 Tokyo All-Inclusive Combo 🎌</h1>
+    <p class="subtitle">🗼 4 Days, 3 Nights | ₹1,20,000 Per Person 🌸</p>
+
+    <div class="description">
+      <p>Includes luxury hotel stay, guided city tours, daily breakfast, and complimentary airport transfers! 
+         <strike>₹1,20,000</strike> <span style="color: #ff4081; font-weight: bold;">Special Price: ₹90,000 per person (25% OFF!)</span></p>
+    </div>
+
+    <form id="bookingForm">
+      <label for="name">👤 Full Name</label>
+      <input type="text" id="name" name="name" placeholder="e.g. Sakura Tanaka" required />
+
+      <label for="email">📧 Email</label>
+      <input type="email" id="email" name="email" placeholder="e.g. sakura@example.com" required />
+
+      <label for="aadhaar">🇮🇳 Aadhaar Number</label>
+      <input type="text" id="aadhaar" name="aadhaar" placeholder="XXXX-XXXX-XXXX" required />
+
+      <label for="passport">🛂 Passport Number</label>
+      <input type="text" id="passport" name="passport" placeholder="e.g. T1234567" required />
+
+      <label for="people">👥 Number of People</label>
+      <input type="number" id="people" name="people" min="1" placeholder="e.g. 2" required />
+
+      <label for="stay">📅 Stay Duration</label>
+      <div class="date-range">
+        <input type="date" name="from" required />
+        <input type="date" name="to" required />
+      </div>
+
+      <label for="requests">🎌 Special Requests</label>
+      <textarea id="requests" rows="4" name="requests" placeholder="Any special arrangements or needs..."></textarea>
+
+      <label class="checkbox">
+        <input type="checkbox" required />
+        I agree to the <a href="Terms.html" target="_blank">terms and conditions</a>
+      </label>
+
+      <button type="button" id="confirmButton">🏯 Confirm Booking</button>
+    </form>
+  </div>
+
+  <!-- Modal for confirmation -->
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Confirm Your Booking</h2>
+      <p>Are you sure you want to proceed with the booking?</p>
+      <button id="modalConfirmButton">Yes, Proceed to Payment</button>
+      <button id="modalCancelButton">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to handle form validation and popup
+    const form = document.getElementById('bookingForm');
+    const confirmButton = document.getElementById('confirmButton');
+    const modal = document.getElementById('confirmationModal');
+    const closeModal = document.querySelector('.close');
+    const modalConfirmButton = document.getElementById('modalConfirmButton');
+    const modalCancelButton = document.getElementById('modalCancelButton');
+
+    confirmButton.addEventListener('click', function() {
+      if (form.checkValidity()) {
+        modal.style.display = "block"; // Show the modal
+      } else {
+        alert('⚠️ Please fill out all required fields correctly!');
+      }
+    });
+
+    closeModal.addEventListener('click', function() {
+      modal.style.display = "none"; // Close the modal
+    });
+
+    modalCancelButton.addEventListener('click', function() {
+      modal.style.display = "none"; // Close the modal
+    });
+
+    modalConfirmButton.addEventListener('click', function() {
+      alert('🎉 Your booking details are valid! Proceeding to payment...');
+      window.location.href = 'payment.html'; // Redirect to payment page
+    });
+
+    // Close the modal if the user clicks anywhere outside of it
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feedback Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #007BFF;
+    }
+
+    form {
+      max-width: 550px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(240,248,255,0.95));
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.8), 0 0 30px rgba(0, 123, 255, 0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #0056b3;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      box-sizing: border-box;
+      color: black;
+    }
+
+    .stars {
+      direction: rtl;
+      display: inline-flex;
+      font-size: 30px;
+      justify-content: center;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .stars input {
+      display: none;
+    }
+
+    .stars label {
+      color: grey;
+      cursor: pointer;
+      padding: 0 2px;
+      transition: transform 0.2s;
+    }
+
+    .stars label:hover,
+    .stars label:hover ~ label,
+    .stars input:checked ~ label {
+      color: gold;
+      transform: scale(1.2);
+    }
+
+    .info-message,
+    .thank-you-message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 16px;
+      color: white;
+    }
+
+    .thank-you-message {
+      display: none;
+      color: #007BFF;
+      font-size: 20px;
+      font-weight: bold;
+      transition: opacity 0.5s ease;
+    }
+
+    button.submit-btn {
+      display: block;
+      margin: 25px auto 10px auto;
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 17px;
+      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+    }
+
+    button.submit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        margin: 10px;
+      }
+
+      form {
+        padding: 15px;
+      }
+
+      .stars {
+        font-size: 24px;
+      }
+
+      button.submit-btn {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .radio-group {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Website Feedback Form</h2>
+
+<form id="feedbackForm">
+  <label for="fullname">Full Name:</label>
+  <input type="text" id="fullname" name="fullname" required />
+  <div class="error" id="nameError"></div>
+
+  <label for="email">Email Address:</label>
+  <input type="email" id="email" name="email" required />
+  <div class="error" id="emailError"></div>
+
+  <label>Is this your first time visiting our website?</label>
+  <div class="radio-group">
+    <label><input type="radio" name="first_time" value="Yes" /> Yes</label>
+    <label><input type="radio" name="first_time" value="No" /> No</label>
+  </div>
+  <div class="error" id="visitError"></div>
+
+  <label for="description">What issues did you face on our site?</label>
+  <textarea id="description" name="description" rows="4" placeholder="Describe any problems..." required></textarea>
+
+  <label for="service">How is our service?</label>
+  <select id="service" name="service" required>
+    <option value="">--Select an option--</option>
+    <option value="excellent">Excellent</option>
+    <option value="good">Good</option>
+    <option value="average">Average</option>
+    <option value="poor">Poor</option>
+  </select>
+
+  <label>Rate your experience:</label>
+  <div class="stars">
+    <input type="radio" id="star5" name="rating" value="5" />
+    <label for="star5">&#9733;</label>
+    <input type="radio" id="star4" name="rating" value="4" />
+    <label for="star4">&#9733;</label>
+    <input type="radio" id="star3" name="rating" value="3" />
+    <label for="star3">&#9733;</label>
+    <input type="radio" id="star2" name="rating" value="2" />
+    <label for="star2">&#9733;</label>
+    <input type="radio" id="star1" name="rating" value="1" />
+    <label for="star1">&#9733;</label>
+  </div>
+  <div class="error" id="ratingError"></div>
+
+  <button type="submit" class="submit-btn">Submit Feedback</button>
+  <p id="thankYou" class="thank-you-message">Thanks for your response!</p>
+</form>
+
+<p class="info-message">We’re always happy to assist! Please fill in the form, and our support team will respond as soon as possible.</p>
+<p class="info-message">Thank you for your response. Our team will find a solution for your query.</p>
+
+<script>
+  const form = document.getElementById("feedbackForm");
+  const nameInput = document.getElementById("fullname");
+  const emailInput = document.getElementById("email");
+
+  nameInput.addEventListener("input", () => {
+    document.getElementById("nameError").textContent = nameInput.value.trim() === "" ? "Name is required." : "";
+  });
+
+  emailInput.addEventListener("input", () => {
+    const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    document.getElementById("emailError").textContent = !pattern.test(emailInput.value.trim()) ? "Invalid email." : "";
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let valid = true;
+
+    ["nameError", "emailError", "visitError", "ratingError"].forEach(id => document.getElementById(id).textContent = "");
+
+    const name = nameInput.value.trim();
+    if (name === "") {
+      document.getElementById("nameError").textContent = "Please enter your name.";
+      valid = false;
+    }
+
+    const email = emailInput.value.trim();
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(email)) {
+      document.getElementById("emailError").textContent = "Please enter a valid email.";
+      valid = false;
+    }
+
+    const visitSelected = [...document.getElementsByName("first_time")].some(r => r.checked);
+    if (!visitSelected) {
+      document.getElementById("visitError").textContent = "Please select an option.";
+      valid = false;
+    }
+
+    const ratingSelected = [...document.getElementsByName("rating")].some(r => r.checked);
+    if (!ratingSelected) {
+      document.getElementById("ratingError").textContent = "Please rate your experience.";
+      valid = false;
+    }
+
+    if (valid) {
+      document.getElementById("thankYou").style.display = "block";
+      form.reset();
+      setTimeout(() => {
+        document.getElementById("thankYou").style.display = "none";
+      }, 4000);
+    }
+  });
+</script>
+
+</body>
+</html>
