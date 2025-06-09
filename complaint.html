@@ -91,23 +91,6 @@
       margin-top: 5px;
     }
 
-    .success-message {
-      text-align: center;
-      background-color: #d1fae5;
-      color: #065f46;
-      padding: 12px;
-      border-radius: 10px;
-      margin-top: 15px;
-      display: none;
-      font-weight: bold;
-      animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     input.error, select.error, textarea.error {
       border-color: red;
       background-color: #fff5f5;
@@ -194,29 +177,24 @@
       <div class="submit-button-container">
         <button type="submit">📨 Submit Complaint</button>
       </div>
-
-      <div class="success-message" id="successMessage">✅ Complaint submitted successfully!</div>
     </form>
   </div>
 
   <script>
     const form = document.querySelector("form");
-    const successMessage = document.getElementById("successMessage");
     const severityInput = document.getElementById("severity");
     const severityLevel = document.getElementById("severityLevel");
     const anonymousCheckbox = document.querySelector("input[name='anonymous']");
     const personalFields = ["name", "email", "phone"];
 
-    // Animated severity emojis
     const severityFaces = ["🙂", "😐", "😕", "😟", "😱"];
     severityInput.addEventListener("input", () => {
       const val = parseInt(severityInput.value);
-      severityLevel.innerText = Severity: ${val} ${severityFaces[val - 1]};
+      severityLevel.innerText = `Severity: ${val} ${severityFaces[val - 1]}`;
       severityLevel.style.transform = "scale(1.1)";
       setTimeout(() => severityLevel.style.transform = "scale(1)", 200);
     });
 
-    // Handle anonymity
     anonymousCheckbox.addEventListener("change", function () {
       personalFields.forEach(id => {
         const el = document.getElementById(id);
@@ -226,17 +204,9 @@
       });
     });
 
-    // Fun confirmation confetti effect (textual)
-    function showSuccess() {
-      successMessage.style.display = "block";
-      successMessage.innerText = "🎉 Your complaint was successfully submitted! Thank you for your feedback! 🎉";
-      setTimeout(() => successMessage.style.display = "none", 5000);
-    }
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       let valid = true;
-      successMessage.style.display = "none";
       form.querySelectorAll("input, select, textarea").forEach(el => el.classList.remove("error"));
       form.querySelectorAll("input[required], select[required], textarea[required]").forEach(field => {
         if (!field.value.trim()) {
@@ -249,10 +219,10 @@
         acknowledgment.focus();
         valid = false;
       }
+
       if (valid) {
-        showSuccess();
-        form.reset();
-        severityLevel.innerText = "Severity: 3 😐";
+        alert("✅ Complaint submitted! 📝 We’ll work on it ASAP. Thank you for your feedback! 💙");
+        window.location.href = "index.html";
       } else {
         alert("⚠ Please fill all required fields correctly.");
       }
